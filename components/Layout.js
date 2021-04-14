@@ -4,11 +4,20 @@ import Router from 'next/router'
 
 import Header from './Header'
 import Menu from './Menu'
-import * as Icon from '@ant-design/icons'
 
 const { Sider, Content } = Layout
 
 export default class MyLayout extends Component {
+
+  state = {
+    collapsed: false
+  }
+
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    })
+  }
 
   componentDidMount() {
     const {pathname} = Router
@@ -18,21 +27,26 @@ export default class MyLayout extends Component {
   }
 
   render() {
+    const {collapsed} = this.state
     const {children} = this.props
 
     return (
       <Layout style={{minHeight: '100vh'}}>
-        <Sider>
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <Menu></Menu>
         </Sider>
         <Layout>
-          <Header>
-            <div>
-              {React.createElement(Icon[StepBackwardOutlined])}
+          <Header collapsed={collapsed} handleToggle={this.toggle} />
+          <Content style={{padding: '24px'}}>
+            <div 
+              style={{
+                padding: 24,
+                minHeight: '100%',
+                background: '#fff',
+              }}
+            >
+              {children}
             </div>
-          </Header>
-          <Content style={{backgroundColor: '#fff'}}>
-            {children}
           </Content>
         </Layout>
       </Layout>

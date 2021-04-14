@@ -6,19 +6,19 @@ const menuList = [
     children: [            //子菜单列表
       {
         title: 'Goods',  
-        key: '/goods',
+        key: '/application/goods',
       },
       {
         title: 'Cart',  
-        key: '/cart',
+        key: '/application/cart',
       },
       {
         title: 'Order',  
-        key: '/order',
+        key: '/application/order',
       },
       {
         title: 'OrderList',  
-        key: '/order-list',
+        key: '/application/order-list',
       },
     ]
   },
