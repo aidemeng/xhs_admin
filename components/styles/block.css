@@ -1,24 +1,41 @@
 .drag-block {
-  width: 120px;
-  height: 30px;
+  width: 140px;
+  height: 35px;
   margin: 10px auto;
   background: #eaeaea;
   border: 1px dashed #666;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
 }
-.drop-block {
-  width: 180px;
-  height: 40px;
-  margin: 15px auto;
-  background: #eaeaea;
+.big-drag-block {
+  width: 140px;
+  height: 80px;
+  margin: 10px auto;
+  background: rgb(233, 92, 86, 0.5);
   border: 1px dashed #666;
-  border-radius: 10px;
-  transition: all 0.3s;
+  border-radius: 15px;
+  cursor: pointer;
 }
 .drag-block:hover {
   height: 80px;
   background: rgb(233, 92, 86, 0.5);
   border-radius: 15px;
+}
+.drop-block {
+  width: 200px;
+  height: 45px;
+  margin: 0 auto 15px;
+  background: #eaeaea;
+  border: 1px dashed #666;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.big-drop-block {
+  width: 200px;
+  height: 120px;
+  margin: 0 auto 15px;
+  background: rgb(233, 87, 88);
+  border: none;
+  border-radius: 25px;
 }

@@ -5,7 +5,7 @@ import {
   MenuFoldOutlined,
 } from '@ant-design/icons'
 
-import './styles/header.css'
+import '../styles/header.css'
 const { Header } = Layout
 
 // 头部组件

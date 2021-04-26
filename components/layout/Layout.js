@@ -22,7 +22,7 @@ export default class MyLayout extends Component {
   componentDidMount() {
     const {pathname} = Router
     if(pathname == '/' ){
-       Router.push('/goods')
+       Router.push('/application/goods')
     }
   }
 
@@ -38,10 +38,9 @@ export default class MyLayout extends Component {
         <Layout>
           <Header collapsed={collapsed} handleToggle={this.toggle} />
           <Content style={{padding: '24px'}}>
-            <div 
-              style={{
+            <div style={{
                 padding: 24,
-                minHeight: '100%',
+                height: '100%',
                 background: '#fff',
               }}
             >
