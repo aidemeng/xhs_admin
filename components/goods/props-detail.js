@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { List, Button, Modal } from 'antd'
 
 import PropsUpdate from './props-update'
-import emitter from '../../util/eventBus'
+import emitter from '../../utils/eventBus'
+import formateDate from '../../utils/dateUtils'
 
 export default class PropsDetail extends Component {
 
@@ -13,13 +14,18 @@ export default class PropsDetail extends Component {
   updateProps = () => {
     //validateFields验证
     this.form.current.validateFields().then(values => {
+      //设置更新时间
+      values.updateTime = formateDate(Date.now())
+
       const { newProps } = values
       const newValue = {}
       for(let i in newProps) {
         newValue[newProps[i].key] = newProps[i].value
       }
       delete values.newProps
-      emitter.emit('changeData', {...values, ...newValue})
+      //保存到本地
+      const good = {...values, ...newValue}
+      emitter.emit('changeData', good)
 
       this.setState({ visible: false })
     })

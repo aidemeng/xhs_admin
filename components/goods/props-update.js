@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Popconfirm, message } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons'
 
-import Bus from '../../util/eventBus'
+import Bus from '../../utils/eventBus'
 
 const layout = {
   labelCol: {
@@ -64,18 +64,6 @@ export default class PropsUpdate extends Component {
                 >
                   <Input />
                 </Form.Item>
-                {/* <Popconfirm
-                  title="Are you sure to delete this task?"
-                  onConfirm={this.confirm.bind(this, item)}
-                  onCancel={this.cancel}
-                  okText="Yes"
-                  cancelText="No"
-                >
-                  <MinusCircleOutlined 
-                    style={{position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)'}}
-                    onClick={this.showPopconfirm} 
-                  />
-                </Popconfirm> */}
               </div>
             )
           }) 

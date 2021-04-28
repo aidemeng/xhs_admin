@@ -120,7 +120,7 @@ const MyMenu = () => {
       selectedKeys={selectedKeys}
       defaultOpenKeys={[`/${openKey}`]}
       onOpenChange={handleOpenChange}
-      style={{marginTop: '30px'}}
+      style={{ marginTop: 30 }}
     >
       {menu}
     </Menu>

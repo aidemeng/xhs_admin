@@ -15,3 +15,6 @@ a {
 * {
   box-sizing: border-box;
 }
+li.ant-menu-item-selected {
+  background: #1da57a !important;
+}

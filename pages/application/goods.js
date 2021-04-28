@@ -4,28 +4,8 @@ import DragBlock from '../../components/goods/drag-block'
 import DropBlock from '../../components/goods/drop-block'
 import PhoneView from '../../components/goods/phone-view'
 import BlockProps from '../../components/goods/block-props'
-import emitter from '../../util/eventBus'
+import emitter from '../../utils/eventBus'
 import { withRouter } from 'next/router'
-
-
-const goodsList = [
-  {
-    data: 'Image',
-    itemId: '12345',
-    stockStatus: 1
-  },
-  {
-    data: 'Image',
-    itemId: '23456',
-    stockStatus: 2
-  },
-  {
-    data: 'Video',
-    itemId: '34567',
-    stockStatus: 3
-  },
-]
-let block = {}
 
 
 class Goods extends Component {
@@ -33,13 +13,26 @@ class Goods extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      block: this.initBlock(props.router.query.id),
+      goodList: [],
+      block: {} 
     }
   }
 
   componentDidMount() {
-    this.eventEmitter = emitter.addListener('changeData', (values) => {
-      this.setState({block: values})
+    const {id} = this.props.router.query
+    const goodList = JSON.parse(localStorage.getItem('goods'))
+    if(goodList) {
+      const block = goodList.find(item => item.itemId === id)
+      this.setState({ goodList, block })
+    }
+
+    this.eventEmitter = emitter.addListener('changeData', (value) => {
+      const index = goodList.findIndex(item => item.itemId === value.itemId)
+      const goods = JSON.parse(localStorage.getItem('goods'))
+
+      goods.splice(index, 1, value)
+      localStorage.setItem('goods', JSON.stringify(goods))
+      this.setState({block: value})
     })
   }
 
@@ -48,12 +41,12 @@ class Goods extends Component {
     this.eventEmitter.remove()
   }
   
-  initBlock = selectId => goodsList.find(item => item.itemId === selectId)
-
   handleSelect = (selectId) => {
-    for(let i in goodsList) {
-      if(goodsList[i].itemId === selectId) {
-        block = goodsList[i]
+    const { goodList } = this.state
+    let block
+    for(let i in goodList) {
+      if(goodList[i].itemId === selectId) {
+        block = goodList[i]
       }
     }
     this.setState({ block })
@@ -61,27 +54,32 @@ class Goods extends Component {
   
   render() {
     const selectId = this.props.router.query.id
-    const { block } = this.state 
+    const { block, goodList } = this.state 
 
     return (
       <div className="goods-wrapper">
         <div className="left">
           <div className="drag-blocks">
             {
-              goodsList.map(item => { 
-                return (
-                  <DragBlock id={item.itemId} key={item.itemId} size={item.itemId === selectId ? "big" : 'normal'}/>
-                )
-              })
+              goodList.map(item => (
+                <DragBlock 
+                  id={item.itemId} 
+                  key={item.itemId} 
+                  size={item.itemId === selectId ? "big" : 'normal'}
+                />
+              ))
             }
           </div>
           <PhoneView> 
           {
-            goodsList.map(item => { 
-              return (
-                <DropBlock id={item.itemId} key={item.itemId} onSelect={this.handleSelect} size={item.itemId === selectId ? "big" : 'normal'}/>
-              )
-            })
+            goodList.map(item => (
+              <DropBlock 
+                id={item.itemId} 
+                key={item.itemId} 
+                onSelect={this.handleSelect} 
+                size={item.itemId === selectId ? "big" : 'normal'}
+              />
+            ))
           }
           </PhoneView>
         </div>

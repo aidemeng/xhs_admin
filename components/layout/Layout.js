@@ -32,7 +32,12 @@ export default class MyLayout extends Component {
 
     return (
       <Layout style={{minHeight: '100vh'}}>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider 
+          width="256"
+          trigger={null} 
+          collapsible 
+          collapsed={this.state.collapsed}
+        >
           <Menu></Menu>
         </Sider>
         <Layout>
