@@ -42,7 +42,7 @@ export default class PropsDetail extends Component {
       <div>
         <List >
           {
-            Object.keys(block).map(item => {
+            Object.keys(block).map(item => { 
               return (
                 <List.Item key={item}>
                   <span className="left">{item}:</span>

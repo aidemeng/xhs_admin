@@ -25,7 +25,6 @@ class Goods extends Component{
   componentDidMount() {
     const goods = JSON.parse(localStorage.getItem('goods'))
     if(goods) {
-      console.log(goods)
       this.setState({ goods })
     }
   }
@@ -41,7 +40,7 @@ class Goods extends Component{
             type="primary"
             onClick={this.handleAdd}  
             icon={<PlusOutlined />}
-            style={{borderRadius: 5, borderColor: '#1da57a', background: '#1da57a'}}
+            style={{borderRadius: 6}}
           >创建商品</Button>
         <div className="cards">
         {

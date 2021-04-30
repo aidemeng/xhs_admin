@@ -55,6 +55,19 @@ export default class PropsUpdate extends Component {
       >
         {
           Object.keys(block).map(item => {
+            if(item==='itemId' || item==='createTime' || item==='updateTime') {
+              return (
+                <div key={item} style={{position: 'relative'}}>
+                  <Form.Item
+                    {...layout}
+                    label={item}
+                    name={item}
+                  >
+                    <Input disabled/>
+                  </Form.Item>
+                </div>
+              )
+            }
             return (
               <div key={item} style={{position: 'relative'}}>
                 <Form.Item

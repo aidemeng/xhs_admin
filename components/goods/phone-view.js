@@ -13,6 +13,7 @@ export default function PhoneView(props) {
       </div>
       <style jsx>{`
         .phone-view {
+          width: 222px;
           height: 420px;
           border: 1px solid #666;
           border-radius: 35px;
@@ -26,9 +27,7 @@ export default function PhoneView(props) {
           border-radius: 5px
         }
         .container {
-          padding: 10px 10px 0;
           border-top: 1px dashed #666;
-          overflow: hidden;
         }
         .footer {
           width: 100%;

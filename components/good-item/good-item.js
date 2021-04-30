@@ -19,7 +19,7 @@ export default function GoodItem({ good, onDelete }) {
     const values = JSON.parse(localStorage.getItem('goods'))
     const goods = values ? values : []
 
-    const index = goods.findIndex(value => value.itemId = id)
+    const index = goods.findIndex(value => value.itemId === id)
     goods.splice(index, 1)
     
     localStorage.setItem('goods', JSON.stringify(goods))
@@ -35,7 +35,7 @@ export default function GoodItem({ good, onDelete }) {
         <Statistic
           title="Name"
           value={good.name}
-          valueStyle={{ color: '#3f8600' }}
+          valueStyle={{ color: '#12864e' }}
         />
         <Popconfirm
           title="Are you sure to delete this good?" 
@@ -43,7 +43,7 @@ export default function GoodItem({ good, onDelete }) {
           okText="Yes" 
           cancelText="No"
         >
-          <DeleteTwoTone className="delete" style={{fontSize: 20}} twoToneColor="#cf1322"/>
+          <DeleteTwoTone className="delete" style={{fontSize: 20}} twoToneColor="#E74C20"/>
         </Popconfirm>
       </div>
       <div style={{display: 'flex', marginTop: 30}}>
@@ -51,14 +51,14 @@ export default function GoodItem({ good, onDelete }) {
           title="createdAt"
           value={good.createTime}
           style={{flex: 1}}
-          valueStyle={{ fontSize: 12, color: '#3f8600' }}
+          valueStyle={{ fontSize: 14, color: '#12864e' }}
         />
-        <Divider type="vertical" style={{height: 48, margin: '0 15px'}} />
+        <Divider type="vertical" style={{height: 50, margin: '0 20px'}} />
         <Statistic
           title="updatedAt"
           value={good.updateTime}
           style={{flex: 1}}
-          valueStyle={{ fontSize: 12, color: '#3f8600' }}
+          valueStyle={{ fontSize: 14, color: '#12864e' }}
         />
       </div>
       

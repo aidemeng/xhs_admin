@@ -4,7 +4,7 @@
 
 import '../styles/block.css'
 
-export default function DragBlock({ id, size }) {
+export default function DragBlock({ id, size, block }) {
 
   //拖动事件
   const drag = (e) => {
@@ -17,7 +17,7 @@ export default function DragBlock({ id, size }) {
       draggable="true"
       className={size === "normal" ? "drag-block" : "big-drag-block"}
       onDragStart={drag} 
-    >
+    >name:{block.name}
     </div>
   )
 }

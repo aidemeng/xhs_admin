@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Element } from 'react-scroll'
+
 
 import DragBlock from '../../components/goods/drag-block'
 import DropBlock from '../../components/goods/drop-block'
@@ -60,27 +62,49 @@ class Goods extends Component {
       <div className="goods-wrapper">
         <div className="left">
           <div className="drag-blocks">
+            <Element 
+              style={{
+                position: 'relative',
+                height: '410px',
+                overflow: 'scroll',
+              }}
+            >
+              {
+                goodList.map(item => (
+                  <Element key={item.itemId}>
+                    <DragBlock 
+                      block={item}
+                      id={item.itemId} 
+                      size={item.itemId === selectId ? "big" : 'normal'}
+                    />
+                  </Element>
+                ))
+              }
+            </Element>
+          </div>
+        <div>
+          
+      </div>
+          <PhoneView> 
+            <Element 
+              style={{
+                position: 'relative',
+                height: '350px',
+                overflow: 'scroll',
+              }}
+            >
             {
               goodList.map(item => (
-                <DragBlock 
-                  id={item.itemId} 
-                  key={item.itemId} 
-                  size={item.itemId === selectId ? "big" : 'normal'}
-                />
+                <Element key={item.itemId}>
+                  <DropBlock 
+                    id={item.itemId} 
+                    onSelect={this.handleSelect} 
+                    size={item.itemId === selectId ? "big" : 'normal'}
+                  />
+                </Element>
               ))
             }
-          </div>
-          <PhoneView> 
-          {
-            goodList.map(item => (
-              <DropBlock 
-                id={item.itemId} 
-                key={item.itemId} 
-                onSelect={this.handleSelect} 
-                size={item.itemId === selectId ? "big" : 'normal'}
-              />
-            ))
-          }
+            </Element>
           </PhoneView>
         </div>
         
@@ -100,8 +124,8 @@ class Goods extends Component {
             align-items: center;
           }
           .drag-blocks {
-            padding: 0 10px;
-            min-height: 420px;
+            width: 162px;
+            height: 420px;
             border: 1px solid #777;
           }
         `}</style>

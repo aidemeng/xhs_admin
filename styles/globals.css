@@ -18,3 +18,7 @@ a {
 li.ant-menu-item-selected {
   background: #1da57a !important;
 }
+.ant-btn-primary {
+  background: #1da57a !important;
+  border-color: #1da57a !important;
+}
