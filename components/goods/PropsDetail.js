@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { List, Button, Modal } from 'antd'
 
-import PropsUpdate from './props-update'
+import PropsUpdate from './PropsUpdate'
 import emitter from '../../utils/eventBus'
 import formateDate from '../../utils/dateUtils'
 

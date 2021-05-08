@@ -11,11 +11,12 @@
   flex-wrap: wrap;
 }
 .cards .good-card {
-  width: 32%;
+  width: 23.5%;
   margin: 0 2% 24px 0;
   padding: 24px;
   border: 1px solid #f0f0f0;
   border-radius: 5px; 
+  cursor: pointer;
   box-shadow: 0 2px 5px rgba(0,21,41,.08);
 }
 .good-card:hover {
@@ -25,6 +26,6 @@
   display: flex;
   justify-content: space-between;
 }
-.cards div:nth-child(3n) {
+.cards div:nth-child(4n) {
   margin-right: 0
 }

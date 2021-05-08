@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Form, Input, Button } from 'antd'
 
-import PropsDetail from './props-detail'
+import PropsDetail from './PropsDetail'
 
 const tabList = [
   {

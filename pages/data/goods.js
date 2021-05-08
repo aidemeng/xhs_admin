@@ -1,25 +1,36 @@
 import { withRouter } from 'next/router'
 
-import { Button, Divider } from 'antd'
+import { Button, Divider, Pagination } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
 import '../../styles/goods.css'
-import GoodItem from '../../components/good-item/good-item'
+import GoodItem from '../../components/good-item/GoodItem'
 import { Component } from 'react'
+
+const numEachPage = 8
 
 class Goods extends Component{
 
   state = {
-    goods: []
+    goods: [],
+    currentPage: 1,
   }
 
+  //创建
   handleAdd = (e) => {
     e.preventDefault()
     this.props.router.push('/data/goods/create')
   }
 
-  handleDelete = (goods) => {
+  //删除与更新
+  handleDeleteOrUpdate = (goods) => {
     this.setState({ goods })
+  }
+
+  onChange = page => {
+    this.setState({
+      currentPage: page
+    })
   }
 
   componentDidMount() {
@@ -30,7 +41,10 @@ class Goods extends Component{
   }
 
   render() {
-    const {goods} = this.state
+    const {goods, currentPage} = this.state
+    const min = (currentPage - 1) * numEachPage
+    const max = currentPage * numEachPage
+    const total = goods.length
 
     return (
       <div className="container">
@@ -43,12 +57,19 @@ class Goods extends Component{
             style={{borderRadius: 6}}
           >创建商品</Button>
         <div className="cards">
-        {
-          goods.map(good => (
-            <GoodItem key={good.itemId} good={good} onDelete={this.handleDelete} />
-          ))
-        }
+          {goods && total > 0 &&
+            goods.slice(min, max).map(good => (
+              <GoodItem key={good.itemId} good={good} onDelete={this.handleDeleteOrUpdate} onUpdate={this.handleDeleteOrUpdate} />
+            ))
+          }
         </div>
+        <Pagination 
+          defaultCurrent={1} 
+          hideOnSinglePage 
+          onChange={this.onChange}
+          pageSize={numEachPage}
+          total={total} 
+        />
       </div>
     )
   }

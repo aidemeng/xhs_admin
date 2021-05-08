@@ -13,10 +13,9 @@ export default function PhoneView(props) {
       </div>
       <style jsx>{`
         .phone-view {
-          width: 222px;
-          height: 420px;
+          height: 500px;
           border: 1px solid #666;
-          border-radius: 35px;
+          border-radius: 30px;
           position: relative;
         }
         .header {

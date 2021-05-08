@@ -41,48 +41,48 @@ export default function BlockForm() {
       <div className="left">
         <div className="good-form">
           <div className="title">Create a good</div>
-            <Form
-              layout="vertical"
-              name="basic"
-              labelAlign="left"
-              initialValues={{
-                remember: true,
-              }}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
+          <Form
+            layout="vertical"
+            name="basic"
+            labelAlign="left"
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+          >
+            <Form.Item
+              label="Name"
+              name="name"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
             >
-              <Form.Item
-                label="Name"
-                name="name"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <Input style={{height: 45, borderRadius: 10}} placeholder="Enter good name"/>
-              </Form.Item>
+              <Input style={{height: 45, borderRadius: 10}} placeholder="Enter good name"/>
+            </Form.Item>
 
-              <Form.Item
-                label="Key"
-                name="key"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <Input style={{height: 45, borderRadius: 10}} placeholder="Enter good key"/>
-              </Form.Item>
+            <Form.Item
+              label="Key"
+              name="key"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input style={{height: 45, borderRadius: 10}} placeholder="Enter good key"/>
+            </Form.Item>
 
-              <Form.Item>
-                <Button block type="primary" htmlType="submit"
-                  style={{height: 50, borderRadius: 10, marginTop: 25, fontSize: 18}}
-                >Save</Button>
-              </Form.Item>
-            </Form>
-          </div>
+            <Form.Item>
+              <Button block type="primary" htmlType="submit"
+                style={{height: 50, borderRadius: 10, marginTop: 25, fontSize: 18}}
+              >Save</Button>
+            </Form.Item>
+          </Form>
         </div>
+      </div>
         
       <style jsx>{`
         .container {
